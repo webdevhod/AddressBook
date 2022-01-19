@@ -1,4 +1,6 @@
 using AddressBook.Data;
+using AddressBook.Services;
+using AddressBook.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +12,8 @@ builder.Services.AddDbContext<ApplicationDBContext>(options =>
         options.UseNpgsql(connectionString);
     }
 );
+
+builder.Services.AddScoped<IImageService, BasicImageService>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
