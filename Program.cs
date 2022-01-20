@@ -8,8 +8,10 @@ var builder = WebApplication.CreateBuilder(args);
 // https://stackoverflow.com/questions/69275805/how-to-use-configuration-from-dotnet-6-minimal-api-in-entity-framework-core-cli
 builder.Services.AddDbContext<ApplicationDBContext>(options =>
     {
-        var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-        options.UseNpgsql(connectionString);
+        //var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+        //options.UseNpgsql(connectionString);
+        //options.UseNpgsql(Environment.GetEnvironmentVariable("DATABASE_URL"));
+        options.UseNpgsql(DataUtility.GetConnectionString(builder.Configuration));
     }
 );
 
