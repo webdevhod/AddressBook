@@ -10,7 +10,6 @@ builder.Services.AddDbContext<ApplicationDBContext>(options =>
     {
         //var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
         //options.UseNpgsql(connectionString);
-        //options.UseNpgsql(Environment.GetEnvironmentVariable("DATABASE_URL"));
         options.UseNpgsql(DataUtility.GetConnectionString(builder.Configuration));
     }
 );
